@@ -5,12 +5,14 @@ import click
 
 @click.command()
 @click.argument("input_file")
-@click.option("--readme","-r",default=False)
+@click.option("--readme/--no-readme","-r",default=False)
 @click.option("--output","-o",type=str,default="layout_vim")
 @click.option("--dry/--no-dry","-d",default=False)
-def main(input_file,readme,output,dry):
-    #output = "layout_file"
-    print(output)
+@click.option("--dir","-d",type=str,default="")
+def main(input_file,readme,output,dry,dir):
+    if dir!="":
+        dir+="/"
+        output=dir+output
 
     if len(sys.argv)<2:
         print("You need to specify the file name")
@@ -45,6 +47,13 @@ def main(input_file,readme,output,dry):
             f.write(result)
     else:
        print(result) 
+
+    if readme:
+        read = ""
+        with open("template.md") as f:
+            read = f.read()
+        with open(dir+"README.md_","w") as f:
+            f.write(read.format(input_file=input_file))
 
 if __name__=="__main__":
     main()
