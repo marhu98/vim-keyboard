@@ -53,6 +53,12 @@ cat qwerty
     qwertyuiopasdfghjklñzxcvbnm
 ```
 
+Or for example left handed dvorak
+```
+cat qwerty
+   ;qbyurso.6-kcdtheaz8'xgvwni 
+```
+
 (Notice is important to include the character left to the l, because some keyboards such as colemak or iso spanish use it).
 
 
