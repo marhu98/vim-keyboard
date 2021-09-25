@@ -52,7 +52,7 @@ def main(input_file,readme,output,dry,dir):
         read = ""
         with open("template.md") as f:
             read = f.read()
-        with open(dir+"README.md_","w") as f:
+        with open(dir+"README.md","w") as f:
             f.write(read.format(input_file=input_file))
 
 if __name__=="__main__":
