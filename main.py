@@ -5,10 +5,10 @@ import click
 
 @click.command()
 @click.argument("input_file")
-@click.option("--template","-t",default=False)
+@click.option("--readme","-r",default=False)
 @click.option("--output","-o",type=str,default="layout_vim")
 @click.option("--dry/--no-dry","-d",default=False)
-def main(input_file,template,output,dry):
+def main(input_file,readme,output,dry):
     #output = "layout_file"
     print(output)
 

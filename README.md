@@ -77,6 +77,16 @@ You can automatically create a README template for your git repo, so your plugin
 
 ```
 python main.py layout_vim --readme
+python main.py layout_vim -r
+```
+
+You can also make a dry run, that is a run that will not actually modify
+any file, just output the resilt to the terminal.
+
+You can do this in one of these two ways:
+```
+python main.py layout_vim --dry
+python main.py layout_vim -d
 ```
 
 ### About the author
