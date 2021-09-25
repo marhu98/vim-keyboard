@@ -7,7 +7,8 @@ import click
 @click.argument("input_file")
 @click.option("--template","-t",default=False)
 @click.option("--output","-o",type=str,default="layout_vim")
-def main(input_file,template,output):
+@click.option("--dry/--no-dry","-d",default=False)
+def main(input_file,template,output,dry):
     #output = "layout_file"
     print(output)
 
@@ -39,8 +40,11 @@ def main(input_file,template,output):
     #print(result)
     #return
 
-    with open(output,"w") as f:
-        f.write(result)
+    if not dry:
+        with open(output,"w") as f:
+            f.write(result)
+    else:
+       print(result) 
 
 if __name__=="__main__":
     main()
