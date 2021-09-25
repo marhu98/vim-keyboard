@@ -1,23 +1,25 @@
 #!/usr/bin/python
 
 import sys
+import click
 
-def main():
-    result_file = "layout_file"
+@click.command()
+@click.argument("input_file")
+@click.option("--template","-t",default=False)
+@click.option("--output","-o",type=str,default="layout_vim")
+def main(input_file,template,output):
+    #output = "layout_file"
+    print(output)
 
     if len(sys.argv)<2:
         print("You need to specify the file name")
-        return
-    if len(sys.argv)==3:
-        result_file = sys.argv[2]
-        
     
     qw = ""
-    with open("qwerty","r") as f:
+    with open(input_file,"r") as f:
         qw=f.read()
     
     nw = ""
-    with open(sys.argv[1],"r") as f:
+    with open(input_file,"r") as f:
         nw=f.read()
     
     #print(qw,nw,end="")
@@ -27,17 +29,17 @@ def main():
     for z in zip(qw,nw):
         if z[0]=="\n":
             continue
-        ins+="inoremap {} {}\n".format(z[0],z[1])
+        ins+="\tinoremap {} {}\n".format(z[0],z[1])
 
     result = """function! {scheme_name}()
-        {insert}        
+    {insert}        
     endunction
     call {scheme_name}()
-    """.format(scheme_name=sys.argv[1],insert=ins)
+    """.format(scheme_name=input_file,insert=ins)
     #print(result)
     #return
 
-    with open(result_file,"w") as f:
+    with open(output,"w") as f:
         f.write(result)
 
 if __name__=="__main__":

@@ -11,7 +11,7 @@ In summary:
 
 - Bind keys in insert mode so that you can use the keyboard config you like (say Colemak, or left-handed Dvorak).
 
-- Preserves the QWERTY bindings on normal, visual and command modes
+- Preserves the QWERTY (or whatever your keyboard is) bindings on normal, visual and command modes
 so you don't have to retrain your musle memory.
 
 Used to generate [this colemake plugin](https://www.github.com/marhu98/)
@@ -34,14 +34,14 @@ To generate a plugin just run:
 
 ```
 python main.py layout_file
-cat layout_file >> ~/.vimrc
+cat layout_vim >> ~/.vimrc
 ```
 
 - NeoVim
 
 ```
-python main.py layout_file
-cat layout_file >> ~/-config/nvim/init.vim
+python main.py layout_vim
+cat layout_vim >> ~/-config/nvim/init.vim
 ```
 
 ## Custom layout
@@ -53,7 +53,7 @@ cat qwerty
     qwertyuiopasdfghjklñzxcvbnm
 ```
 
-Or for example left handed dvorak
+Or for example left handed dvorak:
 ```
 cat qwerty
    ;qbyurso.6-kcdtheaz8'xgvwni 
@@ -67,8 +67,16 @@ cat qwerty
 You can specify the output file by adding a cli argument:
 
 ```
-python main.py layout_file result
+python main.py layout_vim -o result
 cat result >> ~/.vimrc
+```
+
+## Other options
+
+You can automatically create a README template for your git repo, so your plugin is installable with something like Vundle:
+
+```
+python main.py layout_vim --readme
 ```
 
 ### About the author
